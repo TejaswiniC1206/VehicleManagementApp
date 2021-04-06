@@ -48,11 +48,11 @@ class ViewPayments extends Component {
                             <TableRow style={{color:"#3f51b5",  fontSize: 'medium'}}>
                                 <TableCell align="center" style={{color:"#3f51b5",  fontSize: 'medium'}} >#</TableCell>
                                 <TableCell align="center" style={{color:"#3f51b5",  fontSize: 'medium'}}>Payment Mode</TableCell>
-                                <TableCell align="center" style={{color:"#3f51b5",  fontSize: 'medium'}}>Booking ID</TableCell>
                                 <TableCell align="center" style={{color:"#3f51b5",  fontSize: 'medium'}}>Payment Date</TableCell>
+                                <TableCell align="center" style={{color:"#3f51b5",  fontSize: 'medium'}}>Booking ID</TableCell>
                                 <TableCell align="center" style={{color:"#3f51b5",  fontSize: 'medium'}}>Payment Status</TableCell>
-                                <TableCell align="center" style={{color:"#3f51b5",  fontSize: 'medium'}}>TotalPayment</TableCell>
-                                <TableCell align="center" style={{color:"#3f51b5",  fontSize: 'medium'}}>Total Revenue</TableCell>
+                                {/* <TableCell align="center" style={{color:"#3f51b5",  fontSize: 'medium'}}>TotalPayment</TableCell>
+                                <TableCell align="center" style={{color:"#3f51b5",  fontSize: 'medium'}}>Total Revenue</TableCell> */}
                                 <TableCell align="center" style={{color:"#3f51b5",  fontSize: 'medium'}}>Actions</TableCell>
                             </TableRow>
                         </TableHead>
@@ -64,14 +64,14 @@ class ViewPayments extends Component {
                                     </TableCell>
                                     <TableCell align="center">{payment.paymentMode}</TableCell>
                                     <TableCell align="center">{payment.paymentDate}</TableCell>
-                                    <TableCell align="center">{payment.booking.bookedId}</TableCell>
+                                    <TableCell align="center">{payment.booking.bookingId}</TableCell>
                                     <TableCell align="center">{payment.paymentStatus}</TableCell>
-                                    <TableCell align="center">{payment.TotalPayment}</TableCell>
-                                    <TableCell align="center">{payment.TotalRevenue}</TableCell>
+                                    {/* <TableCell align="center">{payment.TotalPayment}</TableCell>
+                                    <TableCell align="center">{payment.TotalRevenue}</TableCell> */}
                                     <TableCell align="center">
                                         <ButtonGroup variant="contained" color="primary" aria-label="contained primary button group" > 
                                             <Button><Link to={"/detailPayment/" + payment.paymentId} style={{ textDecoration: 'none', color: 'white' }}><VisibilityIcon/></Link></Button>
-                                            <Button><Link to={"/updatepayment/" + payment.paymentId} style={{ textDecoration: 'none', color: 'white' }}><EditIcon/></Link></Button>
+                                            <Button><Link to={"/updatePayment/" + payment.paymentId} style={{ textDecoration: 'none', color: 'white' }}><EditIcon/></Link></Button>
                                             <Button onClick={this.deletePayment.bind(this, payment.paymentId)}><DeleteIcon/></Button>
                                         </ButtonGroup>
                                     </TableCell>

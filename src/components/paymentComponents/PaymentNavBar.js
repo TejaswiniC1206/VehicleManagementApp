@@ -129,7 +129,7 @@ export const PaymentNavBar = () => {
         <div className={classes.root}>
             <AppBar position="static" style={{ backgroundColor: 'ghostwhite ', color: 'black' }}>
                 <Toolbar>
-                    <Typography style={{ margin: "10px" }}><Link to="/viewPayments" style={{ color: 'black' }}>Manage Payments</Link></Typography>
+                    <Typography style={{ margin: "10px" }}><Link to="/viewPayment" style={{ color: 'black' }}>Manage Payments</Link></Typography>
                     <Typography style={{ margin: "10px" }}><Link to="/viewPayment" style={{ textDecoration: 'none', color: 'black' }}>View Payments</Link></Typography>
                     <Typography style={{ margin: "10px" }}><Link to="/addPayment" style={{ textDecoration: 'none', color: 'black' }}>Add Payment</Link></Typography>
                    

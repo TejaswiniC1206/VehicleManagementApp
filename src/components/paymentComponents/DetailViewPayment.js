@@ -87,7 +87,7 @@ class DetailViewPayment extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        payment: state.payment
+        payment: state.paymentsData.payment
     }
 }
 

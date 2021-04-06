@@ -7,7 +7,6 @@ import AlertMessage from '@material-ui/lab/Alert';
 import { PaymentNavBar } from "./PaymentNavBar"
 import { connect } from 'react-redux';
 
-
 class AddPayment extends Component {
 
     constructor(){
@@ -15,7 +14,8 @@ class AddPayment extends Component {
         this.paymentMode = React.createRef();
         this.paymentDate = React.createRef();
         this.paymentStatus = React.createRef();
-        this.booking = React.createRef();
+        this.bookingId = React.createRef();
+        this.state = { message: '', displayAlert: false }
     }
 
     componentDidUpdate(prevProps) {
@@ -27,9 +27,12 @@ class AddPayment extends Component {
 
     addPayment(event) {
         event.preventDefault();
+        console.warn("VALUES",this.bookingId,this.paymentMode
+        ,this.paymentStatus, this.paymentDate)
         this.props.onaddPayment({
-            booking:{ bookingId: this.bookingId},
-            paymentMode: this.paymentMode,paymentStatus: this.paymentStatus,paymentDate: this.paymentDate
+            booking:{ bookingId: this.bookingId.current.value},
+            paymentMode: this.paymentMode.current.value,
+            paymentStatus: this.paymentStatus.current.value,paymentDate: this.paymentDate.current.value
         });
     }
 
@@ -47,7 +50,7 @@ class AddPayment extends Component {
                             <Typography variant="h6" style={{ width: 'fit-content', margin: '' }}>Booking ID</Typography>
                             <input type="text" ref={this.bookingId} placeholder="Enter bookingId" name="bookingId" required /><br></br><br></br>
                             <Typography variant="h6" style={{ width: 'fit-content', margin: '' }}>Payment Date</Typography>
-                            <input type="date" ref={this.paymemntDate} placeholder="Enter paymentDate" name="paymentDate" required /><br></br><br></br>
+                            <input type="date" ref={this.paymentDate} placeholder="Enter paymentDate" name="paymentDate" required /><br></br><br></br>
                             <Typography variant="h6" style={{ width: 'fit-content', margin: '' }}>Payment Status</Typography>
                             <input type="text" ref={this.paymentStatus} placeholder="Enter paymentStatus" name="paymentStatus" required /><br></br><br></br>
                             <Button style={{ align: "center" }} variant="contained" onClick={this.addPayment.bind(this)} color="primary">Proceed</Button>
