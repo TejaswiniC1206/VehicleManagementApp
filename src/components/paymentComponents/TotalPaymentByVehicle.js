@@ -7,12 +7,11 @@ import AlertMessage from '@material-ui/lab/Alert';
 import { PaymentNavBar } from "./PaymentNavBar"
 import { connect } from 'react-redux';
 
-class TotalRevenue extends Component{
+class TotalPaymentByVehicle extends Component{
 
     constructor(){
         super();
-        this.paymentDate1 = React.createRef();
-        this.paymentDate2 = React.createRef();
+        this.vehicleId = React.createRef();
         this.state = { message: '', displayAlert: false }
     }
 
@@ -22,14 +21,12 @@ class TotalRevenue extends Component{
         }
     }
 
-
-    fetchTotalRevenue(event) {
+    fetchTotalPaymentByVehicle(event) {
         event.preventDefault();
-        console.warn("VALUES",this.paymentDate1, this.paymentDate2)
+        console.warn("VALUES",this.vehicleId)
         var result = 
-        this.props.onfetchTotalRevenue({
-            paymentDate1: this.paymentDate1.current.value,
-            paymentDate2: this.paymentDate2.current.value
+        this.props.onfetchTotalPaymentByVehicle({
+            vehicleId: this.vehicleId.current.value
         });
         console.warn(result)
     }
@@ -42,13 +39,10 @@ class TotalRevenue extends Component{
                 <Container maxWidth="sm" style={{ marginTop: 15 }}>
                     <Paper elevation={5} style={{ padding: 8, justifyContent: "center", display: "flex" }} >
                         <form>
-
-                            <Typography variant="h6" style={{ width: 'fit-content', margin: '' }}>Payment Date1</Typography>
-                            <input type="date" ref={this.paymentDate1} placeholder="Enter payment Date1" name="paymentDate1" required /><br></br><br></br>
-                            <Typography variant="h6" style={{ width: 'fit-content', margin: '' }}>Payment Date2</Typography>
-                            <input type="date" ref={this.paymentDate2} placeholder="Enter payment Date2" name="paymentDate2" required /><br></br><br></br>
-                            <Button style={{ align: "center" }} variant="contained" onClick={this.fetchTotalRevenue.bind(this)} color="primary">Calculate</Button><br></br><br></br>
-                        <Typography  variant="h6" style={{ width: 'fit-content', margin: '' }}>Total revenue is  : {this.props.revenue}</Typography><br></br><br></br>
+                        <Typography variant="h6" style={{ width: 'fit-content', margin: '' }}>Vehicle ID</Typography>
+                            <input type="text" ref={this.paymentMode} placeholder="Enter vehicle id" name="vehicleId" required /><br></br><br></br>
+                            <Button style={{ align: "center" }} variant="contained" onClick={this.fetchTotalPaymentByVehicle.bind(this)} color="primary">Calculate</Button><br></br><br></br>
+                        <Typography  variant="h6" style={{ width: 'fit-content', margin: '' }}>Total Payment By Vehicle is  : {this.props.revenue}</Typography><br></br><br></br>
                         </form>
                     </Paper>
                 
@@ -67,9 +61,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToState = (dispatch) => {
     return {
-        onfetchTotalRevenue : (payload) => dispatch(actions.fetchTotalRevenue (payload))
+        onfetchTotalPaymentByVehicle : (payload) => dispatch(actions.fetchTotalPaymentByVehicle (payload))
     }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToState)(TotalRevenue);
+export default connect(mapStateToProps, mapDispatchToState)(TotalPaymentBByVehicle);

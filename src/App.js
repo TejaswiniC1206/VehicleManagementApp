@@ -18,6 +18,7 @@ import UpdateBooking from './components/bookingComponents/UpdateBooking';
 import ViewBookings from './components/bookingComponents/ViewBookings';
 import ViewPayments from './components/paymentComponents/ViewPayments';
 import TotalRevenue from './components/paymentComponents/TotalRevenue';
+import TotalPaymentByVehicle from './components/paymentComponents/TotalPaymentByVehicle';
 
 function App() {
   return (
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route path="/viewTotalRevenue">
             <TotalRevenue />
+          </Route>
+          <Route path="/viewTotalPaymentByVehicle">
+            <TotalPaymentByVehicle />
           </Route>
           <Route path="/updateBooking/:id" component={UpdateBooking} />
           <Route path="/detailViewBooking/:id" component={DetailViewBooking} />
